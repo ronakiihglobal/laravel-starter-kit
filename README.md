@@ -4,6 +4,16 @@ This is public repo for starting with Laravel project + Basic authentication usi
 
 It can be used as starter kit for normal web application as well as for APIs + Frontend ( React/Vue ) or only APIs.
 
+## Steps for setup
+
+- Create folder for your project. Ex `mkdir my-project` and `cd my-project`
+- Next in `my-project` folder run this git clone command, note last `.` which will not create new folder. `git clone git@github.com:ronakiihglobal/laravel-starter-kit.git .`
+- Next run `composer install`
+- Next `cp .env.example .env` for generate .env file.
+- Next set database and mail credentials in .env file.
+- Run `php artisan key:generate`
+- Your done, Now you can run `php artisan serve`
+
 
 
 ## For normal web application with session based authentication
