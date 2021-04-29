@@ -104,10 +104,12 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
+        $remember_me = ($request->remember_me) ? true : false;
         
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember_me)) {
             
             if( $request->is('api/*')){
 

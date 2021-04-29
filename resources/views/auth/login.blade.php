@@ -22,6 +22,12 @@
     	@csrf
 		<input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
 		<input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="remember_me" value="1" id="remember_me">
+      <label class="form-check-label" for="remember_me">
+        Remember Me
+      </label>
+    </div>
 		<input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
