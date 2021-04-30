@@ -12,6 +12,7 @@ It can be used as starter kit for normal web application as well as for APIs + F
 - Next `cp .env.example .env` for generate .env file.
 - Next set database and mail credentials in .env file.
 - Run `php artisan key:generate`
+- Run `php artisan migrate`
 - Your done, Now you can run `php artisan serve`
 - Also please dont miss to change `cors.php` and `sanctum.php` config files based on your domain.
 
