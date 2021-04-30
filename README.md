@@ -2,7 +2,7 @@
 
 This is public repo for starting with Laravel project + Basic authentication using [Laravel/sanctum](https://laravel.com/docs/8.x/sanctum) .
 
-It can be used as starter kit for normal web application as well as for APIs + Frontend ( React/Vue ) or only APIs.
+It can be used as starter kit for normal web application as well as for APIs + Frontend ( React/Vue ) or for only APIs.
 
 ## Steps for setup
 
