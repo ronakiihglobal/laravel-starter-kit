@@ -47,6 +47,13 @@ class AuthController extends Controller
             }
         }else{
 
+            // if($request->expectsJson()){
+            //     if( $status == Password::PASSWORD_RESET ){
+            //         return response()->json(["message" => "Password changed successfully"]);
+            //     }else{
+            //         return response()->json(['email' => [__($status)]]);
+            //     }
+            // }
             return $status == Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('status', __($status))->withSuccess('Password changed successfully!')
                     : back()->withErrors(['email' => [__($status)]]);    
@@ -72,6 +79,14 @@ class AuthController extends Controller
         
 
         }else{
+
+            // if($request->expectsJson()){
+            //     if( $status == Password::RESET_LINK_SENT ){
+            //         return response()->json(["message" => "Mail sent successfully!"]);
+            //     }else{
+            //         return response()->json(['email' => [__($status)]]);
+            //     }
+            // }
 
             return $status === Password::RESET_LINK_SENT
                         ? back()->with(['status' => __($status)])->withSuccess('Mail sent successfully!')
@@ -119,6 +134,9 @@ class AuthController extends Controller
             }else{
 
             	$request->session()->regenerate();
+                if($request->expectsJson()){
+                    return response()->json(["message" => "User logged in successfully!"]);
+                }
             	return redirect()->intended('/');
             }
 
@@ -158,6 +176,9 @@ class AuthController extends Controller
             }else{
 
             	$request->session()->regenerate();
+                if($request->expectsJson()){
+                    return response()->json(["message" => "User registered successfully!"]);
+                }
             	return redirect()->intended('/');
             }
             
@@ -168,32 +189,32 @@ class AuthController extends Controller
     }
 
 
-    public function token(Request $request){
+    // public function token(Request $request){
 
-    	$request->validate([
-	        'email' => 'required|email',
-	        'password' => 'required',
-	        'device_name' => 'required',
-	    ]);
+    // 	$request->validate([
+	   //      'email' => 'required|email',
+	   //      'password' => 'required',
+	   //      'device_name' => 'required',
+	   //  ]);
 
-	    $user = User::where('email', $request->email)->first();
+	   //  $user = User::where('email', $request->email)->first();
 
-	    if (! $user || ! Hash::check($request->password, $user->password)) {
-	        throw ValidationException::withMessages([
-	            'email' => ['The provided credentials are incorrect.'],
-	        ]);
-	    }
+	   //  if (! $user || ! Hash::check($request->password, $user->password)) {
+	   //      throw ValidationException::withMessages([
+	   //          'email' => ['The provided credentials are incorrect.'],
+	   //      ]);
+	   //  }
 
-	    $credentials = $request->only('email', 'password');
+	   //  $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            return $user->createToken($request->device_name)->plainTextToken;
-        }else{
-            throw ValidationException::withMessages(['The credentials are incorrect']);
-        }
+    //     if (Auth::attempt($credentials)) {
+    //         return $user->createToken($request->device_name)->plainTextToken;
+    //     }else{
+    //         throw ValidationException::withMessages(['The credentials are incorrect']);
+    //     }
 	    
 
-    }
+    // }
 
 
     public function logout(Request $request){
@@ -206,6 +227,10 @@ class AuthController extends Controller
     	
     		$request->session()->regenerateToken();
         	$request->session()->invalidate();
+
+            if($request->expectsJson()){
+                return response()->json(["message" => "User logged out successfully!"]);
+            }
     	       
             return redirect()->intended('/login');
     	}
