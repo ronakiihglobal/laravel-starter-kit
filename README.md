@@ -51,7 +51,7 @@ There are below routes
 
 ## For SPA web application with separate frontend like React/VueJs and session based authentication
 
-First need to setup [first-party-domain](https://laravel.com/docs/8.x/sanctum#configuring-your-first-party-domains) 
+First need to setup [first-party-domain](https://laravel.com/docs/8.x/sanctum#configuring-your-first-party-domains). For this there is variable named `stateful` in sanctum.php config file.
 
 Then on page load need to call one API /sanctum/csrf-cookie. This API will set cookie named `XSRF-TOKEN` and on each subsequent API call we will have to pass this value of `XSRF-TOKEN` cookie as `X-XSRF-TOKEN` header.
 
