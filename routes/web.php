@@ -19,8 +19,8 @@ use App\Http\Controllers\AuthController;
 // });
 
 Route::middleware('auth:sanctum')->get('/', [AuthController::class, 'dashboard']);
-Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
-Route::get('/registration', [AuthController::class, 'registrationForm']);
+Route::get('/login', [AuthController::class, 'loginForm'])->middleware('guest')->name('login');
+Route::get('/registration', [AuthController::class, 'registrationForm'])->middleware('guest');
 
 
 Route::get('/forgot-password',function (){ return view('auth.forgot-password');})->middleware('guest')->name('password.request');
