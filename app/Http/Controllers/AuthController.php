@@ -18,48 +18,18 @@ class AuthController extends Controller
 {
 
 
+    public function registrationForm(Request $request){
 
+        return View("auth.registration");
 
-    public function resetPassword(Request $request){
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-        ]);
-
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) use ($request) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
-
-                $user->save();
-                //event(new PasswordReset($user));
-            }
-        );
-
-        if( $request->is('api/*')){
-            if($status == Password::PASSWORD_RESET){
-                return response()->json(["message" => "Password changed successfully"]);
-            }else{
-                return response()->json(["message" => "Something went wrong!"]);
-            }
-        }else{
-
-            // if($request->expectsJson()){
-            //     if( $status == Password::PASSWORD_RESET ){
-            //         return response()->json(["message" => "Password changed successfully"]);
-            //     }else{
-            //         return response()->json(['email' => [__($status)]]);
-            //     }
-            // }
-            return $status == Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))->withSuccess('Password changed successfully!')
-                    : back()->withErrors(['email' => [__($status)]]);    
-        }
-        
     }
+
+    public function loginForm(Request $request){
+
+        return View("auth.login");
+
+    }
+
 
     public function forgotPassword(Request $request) {
 
@@ -80,14 +50,6 @@ class AuthController extends Controller
 
         }else{
 
-            // if($request->expectsJson()){
-            //     if( $status == Password::RESET_LINK_SENT ){
-            //         return response()->json(["message" => "Mail sent successfully!"]);
-            //     }else{
-            //         return response()->json(['email' => [__($status)]]);
-            //     }
-            // }
-
             return $status === Password::RESET_LINK_SENT
                         ? back()->with(['status' => __($status)])->withSuccess('Mail sent successfully!')
                         : back()->withErrors(['email' => __($status)]);
@@ -95,17 +57,46 @@ class AuthController extends Controller
 
     }
 
-    public function loginForm(Request $request){
+    public function resetPassword(Request $request){
+        
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ]);
 
-        return View("auth.login");
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) use ($request) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
 
+                $user->save();
+            }
+        );
+
+        if( $request->is('api/*')){
+            
+            if($status == Password::PASSWORD_RESET){
+                return response()->json(["message" => "Password changed successfully"]);
+            }else{
+                return response()->json(["message" => "Something went wrong!"]);
+            }
+
+        }else{
+
+            return $status == Password::PASSWORD_RESET
+                    ? redirect()->route('login')->with('status', __($status))->withSuccess('Password changed successfully!')
+                    : back()->withErrors(['email' => [__($status)]]);    
+        }
+        
     }
 
-    public function registrationForm(Request $request){
+    
 
-        return View("auth.registration");
-
-    }
+    
+    
 
     public function dashboard(Request $request){
 
@@ -113,8 +104,8 @@ class AuthController extends Controller
 
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request){
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -144,7 +135,6 @@ class AuthController extends Controller
             throw ValidationException::withMessages(['The credentials are incorrect']);
         }
 
-        //return response()->json(["email" => $request->email, "password" => $request->password], 422);
     }
 
 
@@ -182,39 +172,10 @@ class AuthController extends Controller
             	return redirect()->intended('/');
             }
             
-            
         }
 
         return response()->json(["email" => $request->email, "password" => $request->password], 422);
     }
-
-
-    // public function token(Request $request){
-
-    // 	$request->validate([
-	   //      'email' => 'required|email',
-	   //      'password' => 'required',
-	   //      'device_name' => 'required',
-	   //  ]);
-
-	   //  $user = User::where('email', $request->email)->first();
-
-	   //  if (! $user || ! Hash::check($request->password, $user->password)) {
-	   //      throw ValidationException::withMessages([
-	   //          'email' => ['The provided credentials are incorrect.'],
-	   //      ]);
-	   //  }
-
-	   //  $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         return $user->createToken($request->device_name)->plainTextToken;
-    //     }else{
-    //         throw ValidationException::withMessages(['The credentials are incorrect']);
-    //     }
-	    
-
-    // }
 
 
     public function logout(Request $request){
