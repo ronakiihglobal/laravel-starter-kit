@@ -58,7 +58,7 @@ class AuthController extends Controller
     }
 
     public function resetPassword(Request $request){
-        
+
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
@@ -185,9 +185,9 @@ class AuthController extends Controller
         	Auth::user()->currentAccessToken()->delete();
     	
     	}else{
-    	
-    		$request->session()->regenerateToken();
+	        Auth::guard('web')->logout();
         	$request->session()->invalidate();
+    		$request->session()->regenerateToken();
 
             if($request->expectsJson()){
                 return response()->json(["message" => "User logged out successfully!"]);
