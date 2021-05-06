@@ -146,13 +146,13 @@ There are below routes
 	- This is post route for reset-password which will submit data to post route /reset-password.
 
 	- This JSON has fields Email, New password, Confirm password and reset password token.
-	```yaml
-	{
-	    "email":"ronak.iihglobal@yopmail.com",
-	    "token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
-	    "password":"ronak@123",
-	    "password_confirmation":"ronak@123"
-	}
+		```yaml
+		{
+		    "email":"ronak.iihglobal@yopmail.com",
+		    "token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
+		    "password":"ronak@123",
+		    "password_confirmation":"ronak@123"
+		}
 
 	- On successfully submit, it will reset password to new password.
 
@@ -171,7 +171,7 @@ There are below routes
 	- This is post route for registration form which will submit data on post route /register.
 
 	- This JSON has basic fields Name, Email, Password and confirm password.
-	````yaml
+		````yaml
 		{
 		    "email":"ronak.iihgloal@gmail.com",
 		    "password":"ronak@123",
@@ -243,12 +243,12 @@ There are below routes
 
 	- This JSON has fields Email, New password, Confirm password and reset password token.
 
-	```yaml
-	{
-	    "email":"ronak.iihglobal@yopmail.com",
-	    "token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
-	    "password":"ronak@123",
-	    "password_confirmation":"ronak@123"
-	}
+		```yaml
+		{
+		    "email":"ronak.iihglobal@yopmail.com",
+		    "token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
+		    "password":"ronak@123",
+		    "password_confirmation":"ronak@123"
+		}
 
 	- On successfully submit, it will reset password to new password. 
