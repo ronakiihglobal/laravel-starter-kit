@@ -78,7 +78,7 @@ There are below routes
 			"password_confirmation":"ronak@123",
 			"name":"Ronak patel"
 		}
-
+		```yaml
 	- On successfully submit, it will return access token. Token will be something like 
 	`4|whSy5DtICrqk2Fk3rAnwoFdgbBycVlpxF5KLACWW`
 
