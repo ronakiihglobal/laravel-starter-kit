@@ -74,13 +74,14 @@ There are below routes
 		```yaml
 		{
 		    "email":"ronak.iihgloal@gmail.com",
-		"password":"ronak@123",
-		"password_confirmation":"ronak@123",
-		"name":"Ronak patel"
+		    "password":"ronak@123",
+		    "password_confirmation":"ronak@123",
+		    "name":"Ronak patel"
 		}
 
-	- On successfully submit, it will return access token. Token will be something like 
-	`4|whSy5DtICrqk2Fk3rAnwoFdgbBycVlpxF5KLACWW`
+	- On successfully submit, it will return access token. Token will be something like
+	```yaml
+	4|whSy5DtICrqk2Fk3rAnwoFdgbBycVlpxF5KLACWW
 
 
 - POST /login
@@ -92,12 +93,13 @@ There are below routes
 	- This is post route for login, which will submit data on post route /login.
 
 	- This JSON has basic fields Email, Password and Device name (Optional).
-		`{
-			"email":"ronak.iihglobal@gmail.com",
-			"password":"ronak@123",
-			"device_name":"my awesome mobile app"
+		```yaml
+		{
+		    "email":"ronak.iihglobal@gmail.com",
+		    "password":"ronak@123",
+		    "device_name":"my awesome mobile app"
 		}
-		`
+		
 
 	- On successfully submit, it will return access token.
 
@@ -144,13 +146,13 @@ There are below routes
 	- This is post route for reset-password which will submit data to post route /reset-password.
 
 	- This JSON has fields Email, New password, Confirm password and reset password token.
-
-	`{
-		"email":"ronak.iihglobal@yopmail.com",
-		"token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
-		"password":"ronak@123",
-		"password_confirmation":"ronak@123"
-	}`
+	```yaml
+	{
+	    "email":"ronak.iihglobal@yopmail.com",
+	    "token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
+	    "password":"ronak@123",
+	    "password_confirmation":"ronak@123"
+	}
 
 	- On successfully submit, it will reset password to new password.
 
@@ -169,12 +171,13 @@ There are below routes
 	- This is post route for registration form which will submit data on post route /register.
 
 	- This JSON has basic fields Name, Email, Password and confirm password.
-		`{
-			  "email":"ronak.iihgloal@gmail.com",
-			  "password":"ronak@123",
-			  "password_confirmation":"ronak@123",
-			  "name":"Ronak patel"
-		}`
+	````yaml
+		{
+		    "email":"ronak.iihgloal@gmail.com",
+		    "password":"ronak@123",
+		    "password_confirmation":"ronak@123",
+		    "name":"Ronak patel"
+		}
 
 	- On successfully submit, it will return access token. Token will be something like 
 	`4|whSy5DtICrqk2Fk3rAnwoFdgbBycVlpxF5KLACWW`
@@ -188,12 +191,13 @@ There are below routes
 	- This is post route for login, which will submit data on post route /login.
 
 	- This JSON has basic fields Email, Password and Device name (Optional).
-		`{
-			"email":"ronak.iihglobal@gmail.com",
-			"password":"ronak@123",
-			"device_name":"my awesome mobile app"
+		```yaml
+		{
+		    "email":"ronak.iihglobal@gmail.com",
+		    "password":"ronak@123",
+		    "device_name":"my awesome mobile app"
 		}
-		`
+		
 
 	- On successfully submit, it will return access token.
 
@@ -239,11 +243,12 @@ There are below routes
 
 	- This JSON has fields Email, New password, Confirm password and reset password token.
 
-	`{
-		"email":"ronak.iihglobal@yopmail.com",
-		"token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
-		"password":"ronak@123",
-		"password_confirmation":"ronak@123"
-	}`
+	```yaml
+	{
+	    "email":"ronak.iihglobal@yopmail.com",
+	    "token":"f195eb37d328571d5f05c933437fb6569bebcc4280463e0fc807b8507a36e82b",
+	    "password":"ronak@123",
+	    "password_confirmation":"ronak@123"
+	}
 
 	- On successfully submit, it will reset password to new password. 
