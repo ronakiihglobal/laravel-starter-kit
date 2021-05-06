@@ -73,10 +73,10 @@ There are below routes
 	- This JSON has basic fields Name, Email, Password and confirm password.
 		```yaml
 		{
-			  "email":"ronak.iihgloal@gmail.com",
-			  "password":"ronak@123",
-			  "password_confirmation":"ronak@123",
-			  "name":"Ronak patel"
+			"email":"ronak.iihgloal@gmail.com",
+			"password":"ronak@123",
+			"password_confirmation":"ronak@123",
+			"name":"Ronak patel"
 		}
 
 	- On successfully submit, it will return access token. Token will be something like 
